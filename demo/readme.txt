@@ -1,0 +1,3 @@
+- Download TinyMCE 4
+- Copy the "placeholder" folder into the plugins directory
+- Copy demo.html and foo.gif into the tinymce directory (the one that contains tinymce.min.js)

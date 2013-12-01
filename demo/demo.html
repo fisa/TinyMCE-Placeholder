@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Placeholder example</title>
+<script type="text/javascript" src="tinymce.min.js"></script>
+<script>
+tinymce.init({
+	selector: "#element",
+	plugins: [ "image preview code save placeholder" ],
+	toolbar: "save | image | placeholder | code",
+	placeholder_tokens: [
+		{ title: "Foo example", token: "foo", image: "foo.gif" },
+		{ token: "mine" }
+	],
+	save_onsavecallback: function() {
+		console.log(document.getElementById("element").value);
+	}
+});
+</script>
+</head>
+<body>
+<textarea id="element"></textarea>
+</body>
+</html>
