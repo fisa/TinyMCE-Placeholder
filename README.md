@@ -1,5 +1,5 @@
 ## About Placeholder:
-A customizable placeholder plugin for TinyMCE 4. Released under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
+A customizable placeholder plugin for [TinyMCE](http://www.tinymce.com) 4. Released under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
 
 It can be used to put images as placeholders for tokens into the editor. Looking at the html code produced by TinyMCE, the tokens are visible in their textual form.
 
@@ -11,9 +11,9 @@ Into the configuration of TineMCE 'placeholder_tokens' should be declared as an
 array of objects.
 Each object can have the following properties:
 
-- **token**	The token name.
-- **title**	[optional] The text that will be used into the menus.
-- **image**	[optional] The image url that will be used as placeholder.
+- `token` The token name.
+- `title` [optional] The text that will be used into the menus.
+- `image` [optional] The image url that will be used as placeholder.
 
 ### Example of configuration
 
