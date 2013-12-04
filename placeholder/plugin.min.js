@@ -1,6 +1,6 @@
 /**
 	TinyMCE Placeholder v1.0 - December 2013
-	(c) 2013 Federico Isacchi - www.isacchi.eu
+	(c) 2013 Federico Isacchi - http://www.isacchi.eu
 	license: http://www.opensource.org/licenses/mit-license.php
 
 A customizable placeholder plugin for TinyMCE 4.

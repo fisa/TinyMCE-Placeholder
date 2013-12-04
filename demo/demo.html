@@ -2,19 +2,21 @@
 <html>
 <head>
 <title>Placeholder example</title>
-<script type="text/javascript" src="tinymce.min.js"></script>
+<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
 <script>
 tinymce.init({
 	selector: "#element",
-	plugins: [ "image preview code save placeholder" ],
-	toolbar: "save | image | placeholder | code",
-	placeholder_tokens: [
-		{ title: "Foo example", token: "foo", image: "foo.gif" },
-		{ token: "mine" }
+	height: 256,
+	plugins: [
+		"link image preview hr anchor visualblocks code",
+		"table emoticons textcolor placeholder"
 	],
-	save_onsavecallback: function() {
-		console.log(document.getElementById("element").value);
-	}
+	toolbar: "placeholder | bold italic | alignleft aligncenter alignright | link image | forecolor backcolor | preview code",
+	placeholder_tokens: [
+		{ token: "foo", title: "Foo example", image: "images/t_foo.gif" },
+		{ token: "placeholder" },
+		{ token: "project_path", image: "images/t_project_path.gif" }
+	]
 });
 </script>
 </head>
