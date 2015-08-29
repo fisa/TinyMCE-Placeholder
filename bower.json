@@ -1,0 +1,23 @@
+{
+  "name": "tinymce-placeholder",
+  "description": "A customizable placeholder plugin for TinyMCE 4",
+  "main": [
+    "placeholder/plugin.js"
+  ],
+  "keywords": [
+    "tinymce",
+    "placeholder"
+  ],
+  "authors": [
+  	"Federico Isacchi (http://www.isacchi.eu)"
+  ],
+  "homepage": "http://www.isacchi.eu/en/application/13/TinyMCE-Placeholder",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fisa/TinyMCE-Placeholder.git"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ]
+}
