@@ -28,12 +28,12 @@ tinymce.PluginManager.add('placeholder', function(editor, url) {
 		var i,re;
 		for(i=tokens.length-1; i>=0; i--) {
 			//to prevent the text equal to a token to be treated as a token
-			re = new RegExp('\\[\\!'+tokens[i].escapedToken+'\\](?![^\\<\\>]*\>)', 'gi');
+			re = new RegExp('\\[\\!'+tokens[i].escapedToken+'[^\\]]*\\](?![^\\<\\>]*\>)', 'gi');
 			s = s.replace(re, '[&#x21;'+tokens[i].token+']');
 			
 			//substitutes the placeholders with the tokens
-			re = new RegExp('\<img[^\\>]+placeholder_data\\=\\"'+tokens[i].escapedToken+'\\"[^\\>]*\>', 'gi');
-			s = s.replace(re, '[!'+tokens[i].token+']');
+			re = new RegExp('\<img[^\\>]+placeholder_data\\=\\"'+tokens[i].escapedToken+'\\" placeholder_args\\=\\"([^\\"]*)[^\\>]*\>', 'gi');
+			s = s.replace(re, '[!'+tokens[i].token+"$1"+']');
 		}
 		return s;
 	}
@@ -46,8 +46,8 @@ tinymce.PluginManager.add('placeholder', function(editor, url) {
 	function _fromSrc(s) {
 		var i,re;
 		for(i=tokens.length-1; i>=0; i--) {
-			re = new RegExp('\\[\\!'+tokens[i].escapedToken+'\\](?![^\\<\\>]*\\>)', 'gi');
-			s = s.replace(re, '<img src="'+tokens[i].image+'" placeholder_data="'+tokens[i].token+'">');
+			re = new RegExp('\\[\\!'+tokens[i].escapedToken+'([^\\]]*)\\](?![^\\<\\>]*\\>)', 'gi');
+			s = s.replace(re, '<img src="'+tokens[i].image+'" placeholder_data="'+tokens[i].token+'" placeholder_args="'+"$1"+'">');
 		}
 		return s;
 	}
@@ -59,15 +59,15 @@ tinymce.PluginManager.add('placeholder', function(editor, url) {
 	//BEGIN add the attribute placeholder_data as a valid one for img
 	//note: the attribute list of img was taken from Schema.js
 	if(editor.settings.extended_valid_elements == undefined)
-		editor.settings.extended_valid_elements = 'img[src|alt|usemap|ismap|width|height|class|placeholder_data]';
+		editor.settings.extended_valid_elements = 'img[src|alt|usemap|ismap|width|height|class|placeholder_data|placeholder_args]';
 	else {
 		var i = editor.settings.extended_valid_elements.search(/img[\s]*\[[^\[\]]+\]/i);
 		if(i==-1)
-			editor.settings.extended_valid_elements += ',img[src|alt|usemap|ismap|width|height|class|placeholder_data]';
+			editor.settings.extended_valid_elements += ',img[src|alt|usemap|ismap|width|height|class|placeholder_data|placeholder_args]';
 		else {
 			var a = editor.settings.extended_valid_elements.substr(i);
 			a = a.substr(a.indexOf('[')+1);
-			editor.settings.extended_valid_elements = editor.settings.extended_valid_elements.substring(0,i) + 'img[placeholder_data|' + a;
+			editor.settings.extended_valid_elements = editor.settings.extended_valid_elements.substring(0,i) + 'img[placeholder_data|placeholder_args|' + a;
 		}
 	}
 	//END add the attribute placeholder_data as a valid one for img
